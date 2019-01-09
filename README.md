@@ -95,6 +95,49 @@ class PostFilters extends QueryFilter
 }
 ```
 
+Demo:
+
+```
+// your-url?sort_by=id
+// SELECT * FROM `posts` ORDER BY `id` ASC
+
+// your-url?sort_by=id&sort=desc
+// SELECT * FROM `posts` ORDER BY `id` DESC
+```
+
+### Searchable
+
+Allow to search items, you must add `$searchable` property:
+
+```php
+use FVSoft\QueryFilter\Searchable;
+
+class PostFilters extends QueryFilter
+{
+    use Searchable;
+
+    protected $searchable = [
+        'id', 'title',
+    ];
+}
+```
+
+Demo:
+
+```
+// your-url?search=foo or your-url?q=foo
+// SELECT * FROM `posts` WHERE (`id` LIKE '%foo%' OR `title` LIKE '%foo%')
+
+// your-url?search=foo*
+// SELECT * FROM `posts` WHERE (`id` LIKE 'foo%' OR `title` LIKE 'foo%')
+
+// your-url?search=*foo
+// SELECT * FROM `posts` WHERE (`id` LIKE '%foo' OR `title` LIKE '%foo')
+
+// your-url?search=foo&search_by=title
+// SELECT * FROM `posts` WHERE `title` LIKE '%foo%'
+```
+
 ## Credits
 
 - [Dinh Quoc Han](https://github.com/dinhquochan)
