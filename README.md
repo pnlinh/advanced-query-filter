@@ -26,7 +26,7 @@ Add trait to model:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use FVSort\QueryFilter\Filterable;
+use FVSoft\QueryFilter\Filterable;
 
 class Post extends Model
 {
@@ -39,14 +39,14 @@ Create basic filter `app/Filters/PostFilters.php`:
 ```php
 <?php
 
-namespace App\Filters;
+namespace App\Http\Filters;
 
-use FVSort\QueryFilter\QueryFilter;
+use FVSoft\QueryFilter\QueryFilter;
 
 class PostFilters extends QueryFilter
 {
     /**
-     * `userId` filter.
+     * user_id filter.
      *
      * @param  int  $id
      */
@@ -60,7 +60,7 @@ class PostFilters extends QueryFilter
 In `PostController`:
 
 ```php
-use App\Filters\PostFilters;
+use App\Http\Filters\PostFilters;
 use App\Post;
 
 class PostController extends Controller
