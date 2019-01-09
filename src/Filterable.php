@@ -1,6 +1,6 @@
 <?php
 
-namespace FVSort\QueryFilter;
+namespace FVSoft\QueryFilter;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -10,7 +10,7 @@ trait Filterable
      * Apply filters scope.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  \FVSort\QueryFilter\QueryFilter $filter
+     * @param  \FVSoft\QueryFilter\QueryFilter $filter
      * @return mixed
      */
     public function scopeApplyFilters(Builder $query, QueryFilter $filter)

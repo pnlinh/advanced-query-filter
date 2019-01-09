@@ -1,6 +1,6 @@
 <?php
 
-namespace FVSort\QueryFilter;
+namespace FVSoft\QueryFilter;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

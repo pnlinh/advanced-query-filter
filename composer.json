@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FVSort\\QueryFilter\\": "src"
+            "FVSoft\\QueryFilter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FVSort\\QueryFilter\\Tests\\": "tests"
+            "FVSoft\\QueryFilter\\Tests\\": "tests"
         }
     },
     "scripts": {

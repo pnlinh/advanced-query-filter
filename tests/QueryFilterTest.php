@@ -1,9 +1,9 @@
 <?php
 
-namespace FVSort\QueryFilter\Tests;
+namespace FVSoft\QueryFilter\Tests;
 
-use FVSort\QueryFilter\Filterable;
-use FVSort\QueryFilter\QueryFilter;
+use FVSoft\QueryFilter\Filterable;
+use FVSoft\QueryFilter\QueryFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 

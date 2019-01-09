@@ -1,6 +1,6 @@
 <?php
 
-namespace FVSort\QueryFilter\Tests;
+namespace FVSoft\QueryFilter\Tests;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Database\Schema\Blueprint;
