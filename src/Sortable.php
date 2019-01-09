@@ -12,7 +12,7 @@ trait Sortable
     protected $sortDirection = 'asc';
 
     /**
-     * Get sortable column.
+     * Get sortable columns.
      *
      * @return array
      */
