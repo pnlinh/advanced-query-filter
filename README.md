@@ -76,6 +76,25 @@ class PostController extends Controller
 }
 ```
 
+## Avaiable traits
+
+### Sortable
+
+Allow to order items, you must add `$sortable` property:
+
+```php
+use FVSoft\QueryFilter\Sortable;
+
+class PostFilters extends QueryFilter
+{
+    use Sortable;
+
+    protected $sortable = [
+        'id', 'title',
+    ];
+}
+```
+
 ## Credits
 
 - [Dinh Quoc Han](https://github.com/dinhquochan)
