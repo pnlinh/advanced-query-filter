@@ -28,7 +28,7 @@ trait Searchable
         $modifiedKeyword = $this->modifiedKeyword($keyword);
 
         if ($this->shouldSearchSpecificColumn()) {
-            if ($this->shouldSpecificCOlumnMustExists()) {
+            if ($this->shouldSpecificColumnMustBeExists()) {
                 $this->getBuilder()->where($this->request->query('search_by'), 'like', $modifiedKeyword);
             }
 
@@ -93,7 +93,7 @@ trait Searchable
      *
      * @return bool
      */
-    protected function shouldSpecificCOlumnMustExists()
+    protected function shouldSpecificColumnMustBeExists()
     {
         return  in_array($this->request->query('search_by'), $this->searchable());
     }
