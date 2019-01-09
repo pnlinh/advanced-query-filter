@@ -7,6 +7,7 @@ All notable changes to `advanced-query-filter` will be documented in this file
 ### Added
 
 - Add Sortable Trait ([#1](https://github.com/fvsoft/advanced-query-filter/pull/1))
+- Add Searchable Trait ([#1](https://github.com/fvsoft/advanced-query-filter/pull/2))
 
 
 ## v1.0.0 - 2019-01-09
