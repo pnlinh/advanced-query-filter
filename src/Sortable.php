@@ -13,6 +13,7 @@ trait Sortable
 
     /**
      * Get sortable column.
+     *
      * @return array
      */
     protected function sortable()
