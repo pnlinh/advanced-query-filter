@@ -2,10 +2,10 @@
 
 Advanced Query Filter for [Laravel](https://laravel.com/).
 
-[![Build Status](https://api.travis-ci.org/fvsort/advanced-query-filter.svg)](https://travis-ci.org/fvsort/advanced-query-filter)
-[![Total Downloads](https://poser.pugx.org/fvsort/advanced-query-filter/d/total.svg)](https://packagist.org/packages/fvsort/advanced-query-filter)
-[![Latest Stable Version](https://poser.pugx.org/fvsort/advanced-query-filter/v/stable.svg)](https://packagist.org/packages/fvsort/advanced-query-filter)
-[![License](https://poser.pugx.org/fvsort/advanced-query-filter/license.svg)](https://packagist.org/packages/fvsort/advanced-query-filter)
+[![Build Status](https://api.travis-ci.org/fvsoft/advanced-query-filter.svg)](https://travis-ci.org/fvsoft/advanced-query-filter)
+[![Total Downloads](https://poser.pugx.org/fvsoft/advanced-query-filter/d/total.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
+[![Latest Stable Version](https://poser.pugx.org/fvsoft/advanced-query-filter/v/stable.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
+[![License](https://poser.pugx.org/fvsoft/advanced-query-filter/license.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
 
 ## Requirements
 
@@ -17,7 +17,7 @@ Advanced Query Filter for [Laravel](https://laravel.com/).
 Require this package with composer.
 
 ```bash
-composer require fvsort/advanced-query-filter
+composer require fvsoft/advanced-query-filter
 ```
 
 ## Basic usage
