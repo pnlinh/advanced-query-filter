@@ -61,6 +61,9 @@ abstract class QueryFilter
      */
     protected function filters()
     {
-        return $this->request->query();
+        $filters = $this->request->query();
+        ksort($filters);
+
+        return $filters;
     }
 }
