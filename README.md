@@ -134,7 +134,7 @@ Demo:
 // your-url?search=*foo
 // SELECT * FROM `posts` WHERE (`id` LIKE '%foo' OR `title` LIKE '%foo')
 
-// your-url?search=foo&searcg_by=title
+// your-url?search=foo&search_by=title
 // SELECT * FROM `posts` WHERE `title` LIKE '%foo%'
 ```
 
