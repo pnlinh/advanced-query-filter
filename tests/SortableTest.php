@@ -14,8 +14,11 @@ class SortableTest extends TestCase
     public function sortable_trait()
     {
         $fakeRequest = new Request(['sort_by' => 'id', 'sort' => 'desc']);
+
         $testModelFiters = new TestModelWithSortableFiters($fakeRequest);
+
         $testModel = TestModelWithSortable::applyFilters($testModelFiters)->toSql();
+
         $expected = TestModelWithSortable::orderBy('id', 'desc')->toSql();
 
         $this->assertEquals($testModel, $expected);

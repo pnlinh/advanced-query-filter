@@ -13,7 +13,9 @@ class QueryFilterTest extends TestCase
     public function scope_apply_filter()
     {
         $testModelFiters = (new TestModelFiters(new Request()));
+
         $testModel = TestModel::applyFilters($testModelFiters)->toSql();
+
         $expected = $testModelFiters->apply(TestModel::query())->toSql();
 
         $this->assertEquals($testModel, $expected);
@@ -22,6 +24,7 @@ class QueryFilterTest extends TestCase
     public function it_can_apply_query()
     {
         $testModelFiters = (new TestModelFiters(new Request()))->apply(TestModel::query())->toSql();
+
         $expected = TestModel::query()->toSql();
 
         $this->assertEquals($testModelFiters, $expected);
@@ -31,7 +34,9 @@ class QueryFilterTest extends TestCase
     public function it_apply_sample_filter()
     {
         $fakeRequest = new Request(['sample' => 'foo']);
+
         $testModelFiters = (new TestModelFiters($fakeRequest))->apply(TestModel::query())->toSql();
+
         $expected = TestModel::where('sample', 'foo')->toSql();
 
         $this->assertEquals($expected, $testModelFiters);

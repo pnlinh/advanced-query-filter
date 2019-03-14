@@ -14,12 +14,15 @@ class SearchableTest extends TestCase
     public function searchable_basic()
     {
         $fakeRequest = new Request(['search' => 'foo']);
+
         $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
 
 
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', '%foo%');
+
             $query->orWhere('tags', 'like', '%foo%');
         })->toSql();
 
@@ -27,7 +30,9 @@ class SearchableTest extends TestCase
 
         // Alias
         $fakeRequestAlias = new Request(['q' => 'foo']);
+
         $testModelFitersAlias = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModelAlias = TestModelWithSearchable::applyFilters($testModelFitersAlias)->toSql();
 
         $this->assertEquals($testModelAlias, $expected);
@@ -37,10 +42,14 @@ class SearchableTest extends TestCase
     public function it_searchable_starts_with()
     {
         $fakeRequest = new Request(['search' => 'foo*']);
+
         $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', 'foo%');
+
             $query->orWhere('tags', 'like', 'foo%');
         })->toSql();
 
@@ -51,10 +60,14 @@ class SearchableTest extends TestCase
     public function it_searchable_ends_with()
     {
         $fakeRequest = new Request(['search' => '*foo']);
+
         $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', '%foo');
+
             $query->orWhere('tags', 'like', '%foo');
         })->toSql();
 
@@ -65,8 +78,11 @@ class SearchableTest extends TestCase
     public function it_searchable_specific_column()
     {
         $fakeRequest = new Request(['search' => 'foo', 'search_by' => 'title']);
+
         $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+
         $expected = TestModelWithSearchable::where('title', 'like', '%foo%')->toSql();
 
         $this->assertEquals($testModel, $expected);
@@ -76,8 +92,11 @@ class SearchableTest extends TestCase
     public function it_can_not_searchable_not_exists_column()
     {
         $fakeRequest = new Request(['search' => 'foo', 'search_by' => 'bar']);
+
         $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+
         $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+
         $expected = TestModelWithSearchable::query()->toSql();
 
         $this->assertEquals($testModel, $expected);
