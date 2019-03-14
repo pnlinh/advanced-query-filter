@@ -18,6 +18,11 @@ abstract class QueryFilter
      */
     protected $queryBuilder;
 
+    /**
+     * Query filter constructor.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -62,6 +67,7 @@ abstract class QueryFilter
     protected function filters()
     {
         $filters = $this->request->query();
+
         ksort($filters);
 
         return $filters;
