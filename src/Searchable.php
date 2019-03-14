@@ -2,6 +2,8 @@
 
 namespace FVSoft\QueryFilter;
 
+use Illuminate\Support\Str;
+
 trait Searchable
 {
     /**
@@ -21,7 +23,7 @@ trait Searchable
      */
     public function search($keyword)
     {
-        if (! $this->searchable() || !$keyword) {
+        if (!$this->searchable() || !$keyword) {
             return;
         }
 
@@ -60,8 +62,8 @@ trait Searchable
      */
     protected function modifiedKeyword($keyword)
     {
-        $endSearch = starts_with($keyword, '*');
-        $startSearch = ends_with($keyword, '*');
+        $endSearch = Str::startsWith($keyword, '*');
+        $startSearch = Str::endsWith($keyword, '*');
 
         if (!$endSearch && $startSearch){
             return '%'.$keyword.'%';
