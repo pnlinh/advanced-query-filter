@@ -15,10 +15,9 @@ class SearchableTest extends TestCase
     {
         $fakeRequest = new Request(['search' => 'foo']);
 
-        $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
-
+        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', '%foo%');
@@ -31,9 +30,9 @@ class SearchableTest extends TestCase
         // Alias
         $fakeRequestAlias = new Request(['q' => 'foo']);
 
-        $testModelFitersAlias = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFiltersAlias = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModelAlias = TestModelWithSearchable::applyFilters($testModelFitersAlias)->toSql();
+        $testModelAlias = TestModelWithSearchable::applyFilters($testModelFiltersAlias)->toSql();
 
         $this->assertEquals($testModelAlias, $expected);
     }
@@ -43,9 +42,9 @@ class SearchableTest extends TestCase
     {
         $fakeRequest = new Request(['search' => 'foo*']);
 
-        $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', 'foo%');
@@ -61,9 +60,9 @@ class SearchableTest extends TestCase
     {
         $fakeRequest = new Request(['search' => '*foo']);
 
-        $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::where(function ($query) {
             $query->orWhere('title', 'like', '%foo');
@@ -79,9 +78,9 @@ class SearchableTest extends TestCase
     {
         $fakeRequest = new Request(['search' => 'foo', 'search_by' => 'title']);
 
-        $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::where('title', 'like', '%foo%')->toSql();
 
@@ -93,9 +92,9 @@ class SearchableTest extends TestCase
     {
         $fakeRequest = new Request(['search' => 'foo', 'search_by' => 'bar']);
 
-        $testModelFiters = new TestModelWithSearchableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::query()->toSql();
 
@@ -108,7 +107,7 @@ class TestModelWithSearchable extends Model
     use Filterable;
 }
 
-class TestModelWithSearchableFiters extends QueryFilter
+class TestModelWithSearchableFilters extends QueryFilter
 {
     use Searchable;
 

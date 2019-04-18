@@ -15,9 +15,9 @@ class SortableTest extends TestCase
     {
         $fakeRequest = new Request(['sort_by' => 'id', 'sort' => 'desc']);
 
-        $testModelFiters = new TestModelWithSortableFiters($fakeRequest);
+        $testModelFilters = new TestModelWithSortableFilters($fakeRequest);
 
-        $testModel = TestModelWithSortable::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModelWithSortable::applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSortable::orderBy('id', 'desc')->toSql();
 
@@ -30,7 +30,7 @@ class TestModelWithSortable extends Model
     use Filterable;
 }
 
-class TestModelWithSortableFiters extends QueryFilter
+class TestModelWithSortableFilters extends QueryFilter
 {
     use Sortable;
 

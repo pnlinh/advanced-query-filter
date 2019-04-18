@@ -12,22 +12,22 @@ class QueryFilterTest extends TestCase
     /** @test */
     public function scope_apply_filter()
     {
-        $testModelFiters = (new TestModelFiters(new Request()));
+        $testModelFilters = new TestModelFilters(new Request());
 
-        $testModel = TestModel::applyFilters($testModelFiters)->toSql();
+        $testModel = TestModel::applyFilters($testModelFilters)->toSql();
 
-        $expected = $testModelFiters->apply(TestModel::query())->toSql();
+        $expected = $testModelFilters->apply(TestModel::query())->toSql();
 
         $this->assertEquals($testModel, $expected);
     }
     /** @test */
     public function it_can_apply_query()
     {
-        $testModelFiters = (new TestModelFiters(new Request()))->apply(TestModel::query())->toSql();
+        $testModelFilters = (new TestModelFilters(new Request()))->apply(TestModel::query())->toSql();
 
         $expected = TestModel::query()->toSql();
 
-        $this->assertEquals($testModelFiters, $expected);
+        $this->assertEquals($testModelFilters, $expected);
     }
 
     /** @test */
@@ -35,11 +35,11 @@ class QueryFilterTest extends TestCase
     {
         $fakeRequest = new Request(['sample' => 'foo']);
 
-        $testModelFiters = (new TestModelFiters($fakeRequest))->apply(TestModel::query())->toSql();
+        $testModelFilters = (new TestModelFilters($fakeRequest))->apply(TestModel::query())->toSql();
 
         $expected = TestModel::where('sample', 'foo')->toSql();
 
-        $this->assertEquals($expected, $testModelFiters);
+        $this->assertEquals($expected, $testModelFilters);
     }
 }
 
@@ -48,7 +48,7 @@ class TestModel extends Model
     use Filterable;
 }
 
-class TestModelFiters extends QueryFilter
+class TestModelFilters extends QueryFilter
 {
     public function sample($value)
     {
