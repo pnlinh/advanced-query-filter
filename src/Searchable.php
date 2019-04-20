@@ -21,7 +21,7 @@ trait Searchable
 
         if ($this->shouldSearchSpecificColumn()) {
             if ($this->shouldSpecificColumnMustBeExists()) {
-                $this->getBuilder()->where($this->request->query('search_by'), 'like', $modifiedKeyword);
+                $this->getBuilder()->where($this->getRequest()->query('search_by'), 'like', $modifiedKeyword);
             }
 
             return;
