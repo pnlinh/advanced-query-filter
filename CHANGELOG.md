@@ -7,6 +7,7 @@ All notable changes to `advanced-query-filter` will be documented in this file
 - Rename `advanced-query-filter` to `laravel-advanced-query-filter`
 - Remove documents block
 - Improved available traits
+- Fix typo variables in tests
 
 ## 1.0.2 - 2019-03-14
 
