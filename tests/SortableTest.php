@@ -17,9 +17,9 @@ class SortableTest extends TestCase
 
         $testModelFilters = new TestModelWithSortableFilters($fakeRequest);
 
-        $testModel = TestModelWithSortable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSortable::query()->applyFilters($testModelFilters)->toSql();
 
-        $expected = TestModelWithSortable::orderBy('id', 'desc')->toSql();
+        $expected = TestModelWithSortable::query()->orderBy('id', 'desc')->toSql();
 
         $this->assertEquals($testModel, $expected);
     }

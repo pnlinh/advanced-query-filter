@@ -4,17 +4,15 @@ namespace FVSoft\QueryFilter;
 
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Filterable Trait.
+ *
+ * @method \Illuminate\Database\Eloquent\Builder applyFilters(\FVSoft\QueryFilter\QueryFilter $filter)
+ */
 trait Filterable
 {
-    /**
-     * Apply filters scope.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  \FVSoft\QueryFilter\QueryFilter  $filter
-     * @return mixed
-     */
-    public function scopeApplyFilters(Builder $query, QueryFilter $filter)
+    public function scopeApplyFilters(Builder $builder, QueryFilter $filter): Builder
     {
-        return $filter->apply($query);
+        return $filter->apply($builder);
     }
 }

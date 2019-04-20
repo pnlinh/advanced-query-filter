@@ -5,6 +5,7 @@ namespace FVSoft\QueryFilter\Tests;
 use FVSoft\QueryFilter\Filterable;
 use FVSoft\QueryFilter\QueryFilter;
 use FVSoft\QueryFilter\Searchable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,9 @@ class SearchableTest extends TestCase
 
         $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSearchable::query()->applyFilters($testModelFilters)->toSql();
 
-        $expected = TestModelWithSearchable::where(function ($query) {
+        $expected = TestModelWithSearchable::query()->where(function (Builder $query) {
             $query->orWhere('title', 'like', '%foo%');
 
             $query->orWhere('tags', 'like', '%foo%');
@@ -32,7 +33,7 @@ class SearchableTest extends TestCase
 
         $testModelFiltersAlias = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModelAlias = TestModelWithSearchable::applyFilters($testModelFiltersAlias)->toSql();
+        $testModelAlias = TestModelWithSearchable::query()->applyFilters($testModelFiltersAlias)->toSql();
 
         $this->assertEquals($testModelAlias, $expected);
     }
@@ -44,9 +45,9 @@ class SearchableTest extends TestCase
 
         $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSearchable::query()->applyFilters($testModelFilters)->toSql();
 
-        $expected = TestModelWithSearchable::where(function ($query) {
+        $expected = TestModelWithSearchable::query()->where(function (Builder $query) {
             $query->orWhere('title', 'like', 'foo%');
 
             $query->orWhere('tags', 'like', 'foo%');
@@ -62,9 +63,9 @@ class SearchableTest extends TestCase
 
         $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSearchable::query()->applyFilters($testModelFilters)->toSql();
 
-        $expected = TestModelWithSearchable::where(function ($query) {
+        $expected = TestModelWithSearchable::query()->where(function (Builder $query) {
             $query->orWhere('title', 'like', '%foo');
 
             $query->orWhere('tags', 'like', '%foo');
@@ -80,9 +81,9 @@ class SearchableTest extends TestCase
 
         $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSearchable::query()->applyFilters($testModelFilters)->toSql();
 
-        $expected = TestModelWithSearchable::where('title', 'like', '%foo%')->toSql();
+        $expected = TestModelWithSearchable::query()->where('title', 'like', '%foo%')->toSql();
 
         $this->assertEquals($testModel, $expected);
     }
@@ -94,7 +95,7 @@ class SearchableTest extends TestCase
 
         $testModelFilters = new TestModelWithSearchableFilters($fakeRequest);
 
-        $testModel = TestModelWithSearchable::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModelWithSearchable::query()->applyFilters($testModelFilters)->toSql();
 
         $expected = TestModelWithSearchable::query()->toSql();
 

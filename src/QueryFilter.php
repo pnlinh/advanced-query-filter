@@ -8,37 +8,22 @@ use Illuminate\Support\Str;
 
 abstract class QueryFilter
 {
-    /**
-     * @var \Illuminate\Http\Request
-     */
+    /** @var \Illuminate\Http\Request */
     protected $request;
 
-    /**
-     * @var \Illuminate\Database\Eloquent\Builder
-     */
-    protected $queryBuilder;
+    /** @var \Illuminate\Database\Eloquent\Builder */
+    protected $builder;
 
-    /**
-     * Query filter constructor.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
 
-    /**
-     * Apply filters.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function apply(Builder $query)
+    public function apply(Builder $builder): Builder
     {
-        $this->queryBuilder = $query;
+        $this->builder = $builder;
 
-        foreach ($this->filters() as $filter => $value) {
+        foreach ($this->getFilters() as $filter => $value) {
             $filter = Str::camel($filter);
 
             if (method_exists($this, $filter)) {
@@ -49,24 +34,19 @@ abstract class QueryFilter
         return $this->getBuilder();
     }
 
-    /**
-     * Get query builder.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function getBuilder()
+    public function getBuilder(): Builder
     {
-        return $this->queryBuilder;
+        return $this->builder;
     }
 
-    /**
-     * Get all filters.
-     *
-     * @return array
-     */
-    protected function filters()
+    public function getRequest(): Request
     {
-        $filters = $this->request->query();
+        return $this->request;
+    }
+
+    protected function getFilters(): array
+    {
+        $filters = $this->getRequest()->query();
 
         ksort($filters);
 

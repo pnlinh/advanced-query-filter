@@ -14,7 +14,7 @@ class QueryFilterTest extends TestCase
     {
         $testModelFilters = new TestModelFilters(new Request());
 
-        $testModel = TestModel::applyFilters($testModelFilters)->toSql();
+        $testModel = TestModel::query()->applyFilters($testModelFilters)->toSql();
 
         $expected = $testModelFilters->apply(TestModel::query())->toSql();
 
@@ -37,7 +37,7 @@ class QueryFilterTest extends TestCase
 
         $testModelFilters = (new TestModelFilters($fakeRequest))->apply(TestModel::query())->toSql();
 
-        $expected = TestModel::where('sample', 'foo')->toSql();
+        $expected = TestModel::query()->where('sample', 'foo')->toSql();
 
         $this->assertEquals($expected, $testModelFilters);
     }

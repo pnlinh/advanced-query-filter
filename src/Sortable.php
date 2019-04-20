@@ -4,39 +4,20 @@ namespace FVSoft\QueryFilter;
 
 trait Sortable
 {
-    /**
-     * Sort direction.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $sortDirection = 'asc';
 
-    /**
-     * Get sortable columns.
-     *
-     * @return array
-     */
-    protected function sortable()
+    protected function sortable(): array
     {
         return property_exists($this, 'sortable') ? $this->sortable : [];
     }
 
-    /**
-     * Sort direction filter.
-     *
-     * @param  string  $direction
-     */
-    public function sort($direction = 'asc')
+    public function sort(string $direction = 'asc')
     {
         $this->sortDirection = ($direction === 'asc') ? 'asc' : 'desc';
     }
 
-    /**
-     * Sort by filter.
-     *
-     * @param  string  $column
-     */
-    public function sortBy($column)
+    public function sortBy(string $column)
     {
         if (in_array($column, $this->sortable())) {
             $this->getBuilder()->orderBy($column, $this->sortDirection);

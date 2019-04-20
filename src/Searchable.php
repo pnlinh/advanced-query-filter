@@ -6,22 +6,12 @@ use Illuminate\Support\Str;
 
 trait Searchable
 {
-    /**
-     * Get searchable columns.
-     *
-     * @return array
-     */
-    protected function searchable()
+    protected function searchable(): array
     {
         return property_exists($this, 'searchable') ? $this->searchable : [];
     }
 
-    /**
-     * Search filter.
-     *
-     * @param  string  $direction
-     */
-    public function search($keyword)
+    public function search(string $keyword)
     {
         if (!$this->searchable() || !$keyword) {
             return;
@@ -44,23 +34,12 @@ trait Searchable
         });
     }
 
-    /**
-     * Alias for "search" method.
-     *
-     * @param  string  $keyword
-     */
-    public function q($keyword)
+    public function q(string $keyword)
     {
         $this->search($keyword);
     }
 
-    /**
-     * Convert keyword to sql like string.
-     *
-     * @param  string  $keyword
-     * @return string
-     */
-    protected function modifiedKeyword($keyword)
+    protected function modifiedKeyword(string $keyword): string
     {
         $endSearch = Str::startsWith($keyword, '*');
         $startSearch = Str::endsWith($keyword, '*');
@@ -80,23 +59,13 @@ trait Searchable
         return $keyword;
     }
 
-    /**
-     * Should search specific column.
-     *
-     * @return bool
-     */
-    protected function shouldSearchSpecificColumn()
+    protected function shouldSearchSpecificColumn(): bool
     {
-        return $this->request->filled('search_by');
+        return $this->getRequest()->filled('search_by');
     }
 
-    /**
-     * Ensure specific column must be exists.
-     *
-     * @return bool
-     */
-    protected function shouldSpecificColumnMustBeExists()
+    protected function shouldSpecificColumnMustBeExists(): bool
     {
-        return  in_array($this->request->query('search_by'), $this->searchable());
+        return  in_array($this->getRequest()->query('search_by'), $this->searchable());
     }
 }
