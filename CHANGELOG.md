@@ -2,25 +2,24 @@
 
 All notable changes to `advanced-query-filter` will be documented in this file
 
-## v1.0.2 - 2019-03-14
+## 1.1.0 - 2019-04-20
 
-### Added
+- Rename `advanced-query-filter` to `laravel-advanced-query-filter`
+- Remove documents block
+- Improved available traits
 
-- Support Laravel v5.8
+## 1.0.2 - 2019-03-14
 
-### Modified
-
+- Support Laravel v5.8.0
 - Change `starts_with`, `ends_with` to `Str::startsWith`, `Str::endsWith`
 
 
-## v1.0.1 - 2019-01-09
-
-### Added
+## 1.0.1 - 2019-01-09
 
 - Add Sortable Trait ([#1](https://github.com/fvsoft/advanced-query-filter/pull/1))
 - Add Searchable Trait ([#1](https://github.com/fvsoft/advanced-query-filter/pull/2))
 
 
-## v1.0.0 - 2019-01-09
+## 1.0.0 - 2019-01-09
 
 - Initial release! 🎉
