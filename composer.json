@@ -1,15 +1,16 @@
 {
-    "name": "fvsoft/advanced-query-filter",
+    "name": "fvsoft/laravel-advanced-query-filter",
     "description": "Advanced Query Filter package for Laravel",
     "keywords": [
         "fvsort",
+        "laravel-advanced-query-filter",
         "advanced-query-filter"
     ],
     "license": "MIT",
     "authors": [
         {
             "name": "Dinh Quoc Han",
-            "email": "dinhquochan96@gmail.com"
+            "email": "contact@dinhquochan.com"
         }
     ],
     "require": {
@@ -17,6 +18,9 @@
         "illuminate/database": "~5.6.0|~5.7.0|~5.8.0",
         "illuminate/http": "~5.6.0|~5.7.0|~5.8.0",
         "illuminate/support": "~5.6.0|~5.7.0|~5.8.0"
+    },
+    "replace": {
+        "fvsoft/advanced-query-filter":  "self.version"
     },
     "require-dev": {
         "orchestra/testbench": "^3.7",

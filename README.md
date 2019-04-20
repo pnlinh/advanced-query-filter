@@ -1,11 +1,11 @@
-# Advanced Query Filter
+# Laravel Advanced Query Filter
 
-Advanced Query Filter for [Laravel](https://laravel.com/).
+Laravel Advanced Query Filter for [Laravel](https://laravel.com/).
 
-[![Build Status](https://api.travis-ci.org/fvsoft/advanced-query-filter.svg)](https://travis-ci.org/fvsoft/advanced-query-filter)
-[![Total Downloads](https://poser.pugx.org/fvsoft/advanced-query-filter/d/total.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
-[![Latest Stable Version](https://poser.pugx.org/fvsoft/advanced-query-filter/v/stable.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
-[![License](https://poser.pugx.org/fvsoft/advanced-query-filter/license.svg)](https://packagist.org/packages/fvsoft/advanced-query-filter)
+[![Build Status](https://api.travis-ci.org/fvsoft/laravel-advanced-query-filter.svg)](https://travis-ci.org/fvsoft/laravel-advanced-query-filter)
+[![Total Downloads](https://poser.pugx.org/fvsoft/laravel-advanced-query-filter/d/total.svg)](https://packagist.org/packages/fvsoft/laravel-advanced-query-filter)
+[![Latest Stable Version](https://poser.pugx.org/fvsoft/laravel-advanced-query-filter/v/stable.svg)](https://packagist.org/packages/fvsoft/laravel-advanced-query-filter)
+[![License](https://poser.pugx.org/fvsoft/laravel-advanced-query-filter/license.svg)](https://packagist.org/packages/fvsoft/laravel-advanced-query-filter)
 
 ## Requirements
 
@@ -17,7 +17,7 @@ Advanced Query Filter for [Laravel](https://laravel.com/).
 Require this package with composer.
 
 ```bash
-composer require fvsoft/advanced-query-filter
+composer require fvsoft/laravel-advanced-query-filter
 ```
 
 ## Basic usage
@@ -25,6 +25,10 @@ composer require fvsoft/advanced-query-filter
 Add trait to model:
 
 ```php
+<?php
+
+namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use FVSoft\QueryFilter\Filterable;
 
@@ -60,6 +64,10 @@ class PostFilters extends QueryFilter
 In `PostController`:
 
 ```php
+<?php
+
+namespace App\Http\Controllers;
+
 use App\Http\Filters\PostFilters;
 use App\Post;
 
@@ -76,13 +84,18 @@ class PostController extends Controller
 }
 ```
 
-## Avaiable traits
+## Available traits
 
 ### Sortable
 
 Allow to order items, you must add `$sortable` property:
 
 ```php
+<?php
+
+namespace App\Http\Filters;
+
+use FVSoft\QueryFilter\QueryFilter;
 use FVSoft\QueryFilter\Sortable;
 
 class PostFilters extends QueryFilter
@@ -110,6 +123,11 @@ Demo:
 Allow to search items, you must add `$searchable` property:
 
 ```php
+<?php
+
+namespace App\Http\Filters;
+
+use FVSoft\QueryFilter\QueryFilter;
 use FVSoft\QueryFilter\Searchable;
 
 class PostFilters extends QueryFilter
@@ -140,7 +158,7 @@ Demo:
 
 ## Credits
 
-- [Dinh Quoc Han](https://github.com/dinhquochan)
+- [Đinh Quốc Hân](https://github.com/dinhquochan)
 
 ## License
 
