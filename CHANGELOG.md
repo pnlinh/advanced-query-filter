@@ -2,6 +2,14 @@
 
 All notable changes to `advanced-query-filter` will be documented in this file
 
+## 1.1.2 - 2919-04-22
+
+- Add `make:filter` command
+
+## 1.1.1 - 2019-04-20
+
+- Call request via getter
+
 ## 1.1.0 - 2019-04-20
 
 - Rename `advanced-query-filter` to `laravel-advanced-query-filter`
