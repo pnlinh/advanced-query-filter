@@ -36,6 +36,13 @@
             "FVSoft\\QueryFilter\\Tests\\": "tests"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FVSoft\\QueryFilter\\Providers\\AdvancedQueryFilterServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit"
     },

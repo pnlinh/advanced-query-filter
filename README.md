@@ -47,7 +47,7 @@ namespace App\Http\Filters;
 
 use FVSoft\QueryFilter\QueryFilter;
 
-class PostFilters extends QueryFilter
+class PostFilter extends QueryFilter
 {
     /**
      * user_id filter.
@@ -68,21 +68,40 @@ In `PostController`:
 
 namespace App\Http\Controllers;
 
-use App\Http\Filters\PostFilters;
+use App\Http\Filters\PostFilter;
 use App\Post;
 
 class PostController extends Controller
 {
-    public function index(PostFilters $filters)
+    public function index(PostFilter $filter)
     {
         // Now apply filters to Post.
-        $posts = Post::applyFilters($filters)->get();
+        $posts = Post::applyFilters($filter)->get();
 
         // Send it to view.
         return view('posts.index', compact('posts'));
     }
 }
 ```
+
+### Making a new filter
+
+The package included an artisan command to create a new filter.
+
+```bash
+php artisan make:filter PostFilter
+```
+
+This filter will have the `App\Http\Filters` namespace and will be saved in `app/Http/Filters`.
+
+or into a custom namespace, say, `App\Blog`
+
+```bash
+php artisan make:filter "Blog/PostFilter"
+```
+
+This filter will have the `App\Blog` namespace and will be saved in `app/Blog`.
+
 
 ## Available traits
 
@@ -98,7 +117,7 @@ namespace App\Http\Filters;
 use FVSoft\QueryFilter\QueryFilter;
 use FVSoft\QueryFilter\Sortable;
 
-class PostFilters extends QueryFilter
+class PostFilter extends QueryFilter
 {
     use Sortable;
 
@@ -130,7 +149,7 @@ namespace App\Http\Filters;
 use FVSoft\QueryFilter\QueryFilter;
 use FVSoft\QueryFilter\Searchable;
 
-class PostFilters extends QueryFilter
+class PostFilter extends QueryFilter
 {
     use Searchable;
 
